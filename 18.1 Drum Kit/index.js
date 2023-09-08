@@ -1,6 +1,5 @@
-function handleClick() {
-  var buttonInnerHtml = this.innerHTML;
-  switch (buttonInnerHtml) {
+function checkLeter(leter) {
+  switch (leter) {
     case 'w':
       var crash = new Audio('./sounds/crash.mp3');
       crash.play();
@@ -32,9 +31,17 @@ function handleClick() {
       var tom4 = new Audio('./sounds/tom-4.mp3');
       tom4.play();
       break;
-      
-    default: console.log(buttonInnerHtml);
+
+    default:
+      console.log(leter);
   }
+}
+
+// DDETECTING BUTTON CLICK AND HANDLING
+function handleClick() {
+  console.log(this.innerHTML);
+  var buttonInnerHtml = this.innerHTML;
+  checkLeter(buttonInnerHtml);
   // this.style.color = 'white';
 }
 // Setting event listener OPTION 1
@@ -51,3 +58,10 @@ for (let i = 0; i < set.length; i++) {
 }
 // var audio = new Audio('./sounds/tom-1.mp3');
 //   audio.play();
+
+// DDETECTING KEYBOARD PRESS AND HANDLING
+
+document.addEventListener('keydown', function (event) {
+  var key = event.key;
+  checkLeter(key);
+});
