@@ -37,11 +37,22 @@ function checkLeter(leter) {
   }
 }
 
+function addAnimation(currentKey) {
+  var activeButton = document.querySelector('.' + currentKey);
+  activeButton.classList.add('pressed');
+
+  setTimeout(() => {
+    activeButton.classList.remove('pressed');
+  }, 200);
+  console.log(activeButton);
+}
+
 // DDETECTING BUTTON CLICK AND HANDLING
 function handleClick() {
   console.log(this.innerHTML);
   var buttonInnerHtml = this.innerHTML;
   checkLeter(buttonInnerHtml);
+  addAnimation(buttonInnerHtml);
   // this.style.color = 'white';
 }
 // Setting event listener OPTION 1
@@ -64,4 +75,5 @@ for (let i = 0; i < set.length; i++) {
 document.addEventListener('keydown', function (event) {
   var key = event.key;
   checkLeter(key);
+  addAnimation(key);
 });
